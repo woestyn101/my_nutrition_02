@@ -9,7 +9,9 @@ var recipeImage = document.getElementById("recipeImage");
 var showInstructiontionList = document.getElementById("showInstructionList");
 
 var theIngredients;
+var theIngredientsArray;
 var theInstructions;
+var theInstructionsArray;
 
 var url = "https://api.edamam.com/api/recipes/v2?type=public&q=Chicken&app_id=7446fad3&app_key=c948828625f59288cf410564484402b1";
 
@@ -64,8 +66,40 @@ function getLabels(thedata){
 // get ingredients
 
 function getIngredients(thedata){
-    console.log(thedata.hits[0].recipe.ingredientLines)
-    console.log(typeof(thedata.hits[0].recipe.ingredientLines))
+
+    theIngredientsArray = []
+
+    console.log(thedata.hits[0].recipe.ingredientLines[0])
+   console.log(typeof(thedata.hits[0].recipe.ingredientLines))
+
+   for (const key in thedata.hits[0].recipe.ingredientLines){
+    // console.log(thedata.hits[key].recipe.label);
+     console.log(thedata.hits[0].recipe.ingredientLines[key]);
+     theIngredientsArray.push(thedata.hits[0].recipe.ingredientLines[key]);
+ }
+   
+  console.log(theIngredientsArray);
+
+  for (var i = 0; i < theIngredientsArray.length; i++){
+    var liE = document.createElement("li");
+    liE.innerText = theIngredientsArray[i];
+    showIngredientList.appendChild(liE);
+    
+   }
+
+    // for (const key in thedata.hits[0].recipe.ingredientLines){
+    //      console.log(thedata.hits[key].recipe.ingredientLines);
+    //     // theIngredientsArray.push(thedata.hits[key].recipe.ingredientLines);
+    //  }
+    //  console.log(theIngredientsArray);
+    //  console.log(typeof(theIngredientsArray));
+
+    // for (var i = 0; i < ingredientsArray.length; i++){
+    //     var liE = document.createElement("li");
+    //     liE.innerText = ingredientsArray[i];
+    //     showIngredientList.appendChild(liE);
+        
+    //    }
 
 }
 function getInstructions(thedata){
