@@ -35,12 +35,7 @@ fetch(url)
 
 
 function getLabels(thedata){
-   // console.log(typeof(thedata.hits));
    
-   // console.log(thedata.hits[0].recipe.label);
-    // for (var i = 0; i < 10; i++){
-    //     console.log(thedata.hits[i].recipe.label)
-    // }
      var theList = [];
 
     for (const key in thedata.hits){
@@ -87,22 +82,26 @@ function getIngredients(thedata){
     
    }
 
-    // for (const key in thedata.hits[0].recipe.ingredientLines){
-    //      console.log(thedata.hits[key].recipe.ingredientLines);
-    //     // theIngredientsArray.push(thedata.hits[key].recipe.ingredientLines);
-    //  }
-    //  console.log(theIngredientsArray);
-    //  console.log(typeof(theIngredientsArray));
-
-    // for (var i = 0; i < ingredientsArray.length; i++){
-    //     var liE = document.createElement("li");
-    //     liE.innerText = ingredientsArray[i];
-    //     showIngredientList.appendChild(liE);
-        
-    //    }
+    
 
 }
 function getInstructions(thedata){
+    theInstructionsArray = [];
     console.log(thedata.hits[0].recipe.instructionLines)
+
+    for (const key in thedata.hits[0].recipe.instructionLines){
+        // console.log(thedata.hits[key].recipe.label);
+         console.log(thedata.hits[0].recipe.instructionLines[key]);
+         theInstructionsArray.push(thedata.hits[0].recipe.instructionLines[key]);
+     }
+       
+      console.log(theInstructionsArray);
+
+      for (var i = 0; i < theInstructionsArray.length; i++){
+        var liE = document.createElement("li");
+        liE.innerText = theInstructionsArray[i];
+        showInstructiontionList.appendChild(liE);
+        
+       }
 
 }
